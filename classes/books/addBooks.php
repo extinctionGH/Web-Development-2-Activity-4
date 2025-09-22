@@ -13,6 +13,9 @@
         }
         if (empty($_POST["publication_year"])) {
             $errors["publication_year"] = "Publication year is required";
+        } 
+        elseif ($_POST["publication_year"] > 2025) {
+            $errors["publication_year"] = "Publication year cannot be greater than 2025";
         }
 
         if (!array_filter($errors)) {
@@ -62,7 +65,7 @@
         <br>
         <div>
             <label>Publication Year:</label><br>
-            <input type="number" name="publication_year">
+            <input type="number" name="publication_year" max="2025">
             <span style="color:red"><?= $errors['publication_year'] ?></span>
         </div>
         <br>
